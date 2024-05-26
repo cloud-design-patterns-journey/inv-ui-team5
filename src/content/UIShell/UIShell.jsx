@@ -16,7 +16,7 @@ import { Route, Routes, BrowserRouter, Link } from 'react-router-dom';
 import ErrorBoundary from "../../components/ErrorBoundary";
 import LandingPage from '../LandingPage';
 import NotFound from '../../components/NotFound';
-
+import StockItemList from "../StockItemList";
 
 class UIShell extends React.Component {
 
@@ -78,6 +78,13 @@ class UIShell extends React.Component {
                                                     onClick={() => { this.setState({ activeItem: '/' }) }}>
                                                     Overview
                                                 </SideNavMenuItem>
+                                                <SideNavMenu renderIcon={Fade} title="Inventory" defaultExpanded>
+                                                    <SideNavMenuItem element={Link} to='/inventory/items'
+                                                        isActive={this.state.activeItem === '/inventory/items'}
+                                                        onClick={() => { this.setState({ activeItem: '/inventory/items' }) }}>
+                                                        Items
+                                                    </SideNavMenuItem>
+                                                </SideNavMenu>
                                                 <SideNavMenu renderIcon={Fade} title="Management">
                                                     <SideNavMenuItem href="#">
                                                         Link
@@ -110,6 +117,7 @@ class UIShell extends React.Component {
                 <Content className='content'>
                     <Routes>
                         <Route path="/" element={<LandingPage />} />
+                        <Route path="/inventory/items" element={<StockItemList />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Content>
