@@ -19,7 +19,7 @@ export class StockItemMockService {
                         manufacturer: 'LG'
                     },
                 ]);
-            }, 1000)
+            }, 2000)
         });
     }
 }
