@@ -6,6 +6,7 @@ import {
     SideNavMenu, SideNavMenuItem, Theme
 } from '@carbon/react';
 import {
+    Person,
     Notification,
     Search,
     Switcher,
@@ -17,6 +18,8 @@ import ErrorBoundary from "../../components/ErrorBoundary";
 import LandingPage from '../LandingPage';
 import NotFound from '../../components/NotFound';
 import StockItemList from "../StockItemList";
+import LoginPage from "../LoginPage";
+import LoginButton from "../LoginPage/LoginButton";
 
 class UIShell extends React.Component {
 
@@ -54,6 +57,13 @@ class UIShell extends React.Component {
                                         </HeaderMenu>
                                     </HeaderNavigation>
                                     <HeaderGlobalBar>
+                                        <HeaderGlobalAction
+                                            aria-label="Login"
+                                            tooltipAlignment="end">
+                                            <LoginButton to="/login">
+                                                <Person size={20} />
+                                            </LoginButton>
+                                        </HeaderGlobalAction>
                                         <HeaderGlobalAction
                                             aria-label="Search"
                                             tooltipAlignment="end">
@@ -118,6 +128,7 @@ class UIShell extends React.Component {
                     <Routes>
                         <Route path="/" element={<LandingPage />} />
                         <Route path="/inventory/items" element={<StockItemList stockService={this.props.stockService} />} />
+                        <Route path="/login" element={<LoginPage />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Content>
