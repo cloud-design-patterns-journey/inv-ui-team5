@@ -6,9 +6,11 @@ export class StockItemService {
     }
 
     async listStockItems() {
+        const TOKEN = localStorage.getItem("token")
         return axios({
             url: '/api/graphql',
             method: "POST",
+            headers: { Authorization: `Bearer ${TOKEN}`},
             data: {
                 query: `
                 {

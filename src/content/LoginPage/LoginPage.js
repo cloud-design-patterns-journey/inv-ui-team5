@@ -9,7 +9,7 @@ const LoginPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post({
+      const response = await axios({
         url: "/api/auth/login",
         method: "POST",
         data: {
@@ -17,7 +17,7 @@ const LoginPage = () => {
           password: password,
         },
       });
-      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("token", response.data.access_token);
       console.log("Login successful:", response.data);
     } catch (error) {
       // Handle error
